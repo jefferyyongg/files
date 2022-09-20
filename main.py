@@ -38,6 +38,3 @@ def find_password(cached_files):
                 if password in l:
                     password = l.split(" ")
                     return password[1].strip()
-
-
-print(find_password(cached_files()))
