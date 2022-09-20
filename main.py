@@ -5,9 +5,11 @@ from genericpath import isfile
 import os
 import shutil
 
+dir_cache = os.getcwd() + "\cache"
+
 
 def clean_cache():
-    dir_cache = os.getcwd() + "\cache"
+    dir_cache
     if not os.path.exists(dir_cache):
         os.mkdir(dir_cache)
     else:
@@ -21,7 +23,7 @@ def cache_zip(dir_zip, dir_cache):
 
 def cached_files():
     cache_list = []
-    dir_cache = os.getcwd() + "\cache"
+    dir_cache
     for f in os.listdir(dir_cache):
         cache_list.append(dir_cache + f"\{f}")
     return cache_list
@@ -34,4 +36,8 @@ def find_password(cached_files):
             lines = data.readlines()
             for l in lines:
                 if password in l:
-                    return l[10:-1]
+                    password = l.split(" ")
+                    return password[1].strip()
+
+
+print(find_password(cached_files()))
